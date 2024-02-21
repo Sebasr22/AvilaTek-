@@ -3,7 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 
-// const Routes = require('./app/routers/index');
+const Routes = require('./app/routers/index');
 const App = express();
 const port = process.env.PORT || 3000;
 
@@ -22,7 +22,7 @@ App.get('/', async (req, res) => {
   }
 });
 
-// Routes(App);
+Routes(App);
 
 const startServer = async () => {
   try {
