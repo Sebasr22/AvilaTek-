@@ -1,3 +1,15 @@
+## [1.1.0] - 2024-02-22 - Time: 01:10 - srvillarroel
+
+### Added
+
+- Cambios en el modelo de productos.
+- Creacion del modelo de historial de pedidos.
+- Middleware de autenticación (Verificacion del jwt).
+- Endpoint de creacion de productos.
+- Endpoint de listado de productos.
+- Endpoint de eliminar productos.
+- Endpoint de actualizacion de productos.
+
 ## [1.0.1] - 2024-02-20 - Time: 00:30 - srvillarroel
 
 ### Added
