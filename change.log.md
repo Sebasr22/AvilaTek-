@@ -1,3 +1,9 @@
+## [1.2.1] - 2024-02-24 - Time: 00:10 - srvillarroel
+
+### Added
+
+- endpoint para listar pedidos por usuario.
+
 ## [1.2.0] - 2024-02-24 - Time: 01:30 - srvillarroel
 
 ### Added

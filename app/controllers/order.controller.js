@@ -1,6 +1,7 @@
 'use strict';
 
-const { createOrderService } = require('../services/order.service');
+const { getUserDataService } = require('../services/auth.service');
+const { createOrderService, listOrderService } = require('../services/order.service');
 
 module.exports = {
 
@@ -24,6 +25,30 @@ module.exports = {
             console.log(order);
 
             res.status(200).json({ message: 'Pedido creado' });
+        } catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    },
+
+    /**
+     * 
+     * @version        :1.0.0
+     * @description    :Listar pedidos
+     * @param {Object} req - solicitud
+     * @param {Object} res - respuesta
+     * @returns
+     * 
+     */
+    async listOrderController(req, res) {
+        try {
+
+            const { idUser } = req.query;
+
+            const user = await getUserDataService(idUser);
+
+            const orders = await listOrderService(idUser);
+
+            res.status(200).json({ message: `Historial de pedidos del usuario ${user.username}`, data: orders});
         } catch (error) {
             res.status(400).json({ message: error.message });
         }

@@ -119,5 +119,25 @@ module.exports = {
         }
     },
 
+    /**
+     * 
+     * @version        :1.0.0
+     * @description    :Servicio para obtener data del usuario
+     * @param {String} idUser - id del usuario
+     * @returns
+     * 
+     */
+    async getUserDataService(_idUser) {
+        try {
+            if (!_idUser) throw new Error('Error, parámetro "_idUser" no proporcionado');
+
+            const user = await UsersModel.findOne({ _id: _idUser });
+
+            return user;
+        } catch (error) {
+            throw error;
+        }
+    },
+
 
 };  

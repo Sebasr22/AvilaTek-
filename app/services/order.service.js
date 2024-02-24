@@ -78,4 +78,22 @@ module.exports = {
         }
     },
 
+    /**
+     * 
+     * @version        :1.0.0
+     * @description    :Listar pedidos
+     * @param {String} idUser - id del usuario
+     * @returns
+     * 
+     */
+    async listOrderService(idUser) {
+        try {
+            const orders = await OrderHistoryModel.find({ id_user: idUser });
+
+            return orders;
+        } catch (error) {
+            throw error;
+        }
+    },
+
 };
