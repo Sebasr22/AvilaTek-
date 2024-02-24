@@ -1,3 +1,10 @@
+## [1.2.0] - 2024-02-24 - Time: 01:30 - srvillarroel
+
+### Added
+
+- Cambios en el modelo de historial de ordenes.
+- Endpoint para hacer pedidos. 
+
 ## [1.1.0] - 2024-02-22 - Time: 01:10 - srvillarroel
 
 ### Added

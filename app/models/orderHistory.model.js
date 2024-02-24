@@ -12,6 +12,7 @@ const OrderHistoryModel = new Schema(
     },
     products: [
       {
+        _id: false,
         productID: {
           type: Schema.Types.ObjectId,
           required: true,
@@ -24,6 +25,10 @@ const OrderHistoryModel = new Schema(
     ],
     total_amount: {
       type: Schema.Types.Number,
+      required: true,
+    },
+    order_status: {
+      type: Schema.Types.String,
       required: true,
     },
     created_at: {
