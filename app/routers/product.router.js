@@ -2,9 +2,7 @@
 
 const Router = require('express').Router();
 
-const { get } = require('mongoose');
 const { createProductController, updateProductController, deleteProductController, listProductController } = require('../controllers/product.controller');
-const verifyTokenMiddleware = require('../middlewares/tokenMiddleware');
 const { createProductDataValidate, updateProductDataValidate, deleteProductDataValidate } = require('../validations/product.data_validate');
 
 
@@ -56,10 +54,13 @@ Router.delete('/v1/product/delete', deleteProductDataValidate, deleteProductCont
  * @version        :1.0.0
  * @description    :Listar productos
  * @method         :GET
+ * @type           :Query
+ * @param {String} page - pagina
+ * @param {String} limit - limite
  * @returns
  * 
  */
-Router.get('/v1/product/list', listProductController);
+// Router.get('/v1/product/list', listProductDataValidate, listProductController);
 
 
 module.exports = Router;

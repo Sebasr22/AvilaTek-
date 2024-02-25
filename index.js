@@ -18,7 +18,7 @@ App.get('/', async (req, res) => {
     res.send('It works!');
   } catch (error) {
     console.error('Error al realizar operaciones en la base de datos:', error);
-    res.status(500).send('Internal Server Error, check logs');
+    res.status(500).send('Internal Server Error');
   }
 });
 

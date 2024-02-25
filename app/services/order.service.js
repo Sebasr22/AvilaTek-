@@ -17,6 +17,7 @@ module.exports = {
     async createOrderService(userID, products) {
         try {
 
+            let productsNotAvailable = [];
             let total_amount = 0;
 
             const productsToBuy = products.map(product => {
@@ -28,13 +29,21 @@ module.exports = {
 
             for (const product of productsToBuy) {
                 const productInfo = await ProductModel.findOne({ _id: product.productID });
-                
+
                 if (productInfo.stock < product.quantity) {
-                    throw new Error('El producto no cuenta con el stock suficiente para realizar la compra');
+                    productsNotAvailable.push(productInfo.name);
                 }
+            }
+
+            // Verificamos si los productos estan disponibles
+            if (productsNotAvailable.length > 0) {
+                throw new Error(`El producto no cuenta con el stock suficiente para realizar la compra: ${productsNotAvailable.join(', ')}`);
+            }
+
+            for (const product of productsToBuy) {
+                const productInfo = await ProductModel.findOne({ _id: product.productID });
                 productInfo.stock -= product.quantity;
                 total_amount += productInfo.price * product.quantity;
-
                 await productInfo.save();
             }
 
@@ -62,15 +71,25 @@ module.exports = {
     async checkIfProductsAreAvailableService(products) {
         try {
 
+            let productsNotAvailable = [];
+
             const productsAvailable = await Promise.all(products.map(async product => {
-                const productAvailable = await ProductModel.findOne({ _id: product.productID, logical_delete: false });
+                const productAvailable = await ProductModel.findOne({ _id: product.productID });
 
                 if (!productAvailable) {
-                    throw new Error('Producto no disponible!');
+                    throw new Error(`El producto no existe con el id: ${product.productID}`);
+                }
+
+                if (productAvailable.logical_delete === true) {
+                    productsNotAvailable.push(productAvailable.name);
                 }
 
                 return productAvailable;
             }));
+
+            if (productsNotAvailable.length > 0) {
+                throw new Error(`Productos no disponibles: ${productsNotAvailable.join(', ')}`);
+            }
 
             return productsAvailable;
         } catch (error) {

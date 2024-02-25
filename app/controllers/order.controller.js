@@ -22,8 +22,6 @@ module.exports = {
             // Creamos el pedido
             const order = await createOrderService(req.userData._id, products);
 
-            console.log(order);
-
             res.status(200).json({ message: 'Pedido creado' });
         } catch (error) {
             res.status(400).json({ message: error.message });
@@ -48,7 +46,7 @@ module.exports = {
 
             const orders = await listOrderService(idUser);
 
-            res.status(200).json({ message: `Historial de pedidos del usuario ${user.username}`, data: orders});
+            res.status(200).json({ message: `Historial de pedidos del usuario: ${user.username}`, data: orders});
         } catch (error) {
             res.status(400).json({ message: error.message });
         }

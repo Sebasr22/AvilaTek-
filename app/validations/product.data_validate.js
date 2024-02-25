@@ -7,7 +7,7 @@ module.exports = {
 
     createProductDataValidate: async (req, res, next) => {
         const schema = Joi.object({
-            name: Joi.string().min(12).max(64).required(),
+            name: Joi.string().min(6).max(64).required(),
             description: Joi.string().min(12).max(255).required(),
             price: Joi.number().required(),
             stock: Joi.number().required(),

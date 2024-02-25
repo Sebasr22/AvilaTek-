@@ -1,3 +1,10 @@
+## [1.2.2] - 2024-02-24 - Time: 01:35 - srvillarroel
+
+### Modified
+
+- Se cambios algunos minimos y maximos de las validaciones.
+- Se hicieron pruebas y se corrigieron errores de casos de uso.
+
 ## [1.2.1] - 2024-02-24 - Time: 00:10 - srvillarroel
 
 ### Added
