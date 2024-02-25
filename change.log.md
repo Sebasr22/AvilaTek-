@@ -1,3 +1,9 @@
+## [1.3.0] - 2024-02-24 - Time: 00:10 - srvillarroel
+
+### Modified
+
+- Paginacion en los listados
+
 ## [1.2.2] - 2024-02-24 - Time: 01:35 - srvillarroel
 
 ### Modified

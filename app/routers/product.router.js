@@ -60,7 +60,7 @@ Router.delete('/v1/product/delete', deleteProductDataValidate, deleteProductCont
  * @returns
  * 
  */
-// Router.get('/v1/product/list', listProductDataValidate, listProductController);
+Router.get('/v1/product/list', listProductController);
 
 
 module.exports = Router;

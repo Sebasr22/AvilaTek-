@@ -41,10 +41,12 @@ module.exports = {
         try {
 
             const { idUser } = req.query;
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
 
             const user = await getUserDataService(idUser);
 
-            const orders = await listOrderService(idUser);
+            const orders = await listOrderService(idUser, page, limit);
 
             res.status(200).json({ message: `Historial de pedidos del usuario: ${user.username}`, data: orders});
         } catch (error) {

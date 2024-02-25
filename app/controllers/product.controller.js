@@ -102,7 +102,11 @@ module.exports = {
      */
     async listProductController(req, res) {
         try {
-            const products = await listProductService().catch((error) => {
+
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
+
+            const products = await listProductService(page, limit).catch((error) => {
                 throw new Error(error.message);
             });
 

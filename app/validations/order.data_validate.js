@@ -40,6 +40,8 @@ module.exports = {
         try {
             const schema = Joi.object({
                 idUser: Joi.string().hex().length(24).required(),
+                page: Joi.number(),
+                limit: Joi.number(),
             });
             await schema.validateAsync(req.query);
 

@@ -102,17 +102,25 @@ module.exports = {
      * @version        :1.0.0
      * @description    :Listar pedidos
      * @param {String} idUser - id del usuario
+     * @param {String} page - pagina
+     * @param {String} limit - limite
      * @returns
      * 
      */
-    async listOrderService(idUser) {
+    async listOrderService(idUser, page = 1, limit = 10) {
         try {
-            const orders = await OrderHistoryModel.find({ id_user: idUser });
+            
+            const skip = (page - 1) * limit;
+
+            // Utilizar mongoose para realizar la consulta con paginación
+            const orders = await OrderHistoryModel
+                .find({ id_user: idUser })
+                .skip(skip)
+                .limit(limit)
 
             return orders;
         } catch (error) {
             throw error;
         }
-    },
-
+    }
 };

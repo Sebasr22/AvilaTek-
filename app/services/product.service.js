@@ -99,20 +99,24 @@ module.exports = {
      * @returns
      * 
      */
-    async listProductService() {
-    
+    async listProductService(page = 1, limit = 10) {
+
         try {
+
+            const skip = (page - 1) * limit;
+
             const products = await ProductsModel.find({
                 logical_delete: false,
-            }).catch((error) => {
-                throw new Error(error.message);
-            });
+            }).skip(skip).limit(limit)
+                .catch((error) => {
+                    throw new Error(error.message);
+                });
 
             return products;
         } catch (error) {
             throw error;
         }
-    
+
     },
 
     /**
